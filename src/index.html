@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+<head>
+	<meta charset="gbk" />
+	<meta name="robots" content="none" />
+	<meta name="author" content="mf" />
+
+	<title>PHPMark 2</title>
+
+	<style type="text/css">
+		body { margin: 50px 0; text-align: center; background: #222; }
+			body * { margin: 0; padding: 0; font: 14px 'Tahoma'; word-wrap: break-word; }
+			body ul { overflow: hidden; margin: 0 auto; text-align: left; width: 650px; background: #fff; }
+				body ul li { float: left; overflow: hidden; width: 650px; list-style: none; }
+					body ul li.h { height: 71px; background: #3c8dbc; border-bottom: 4px solid #2f7095; }
+						body ul li.h h1 { float: left; display: inline; margin: 15px 15px 15px 25px; font-size: 34px; color: #fff; }
+						body ul li.h h2 { float: left; display: inline; margin-top: 22px; font-size: 24px; color: #4eb0f8; }
+						body ul li.h button { float: right; display: inline; margin: 15px 25px; padding: 10px 18px; font-size: 16px; color: #ddd; background: #337ab7; border: 1px solid #2e6da4; border-radius: 5px; cursor: pointer; outline: none; }
+							body ul li.h button:hover { background: #286090; }
+							body ul li.h button:active { background: #1a5588; }
+					body ul li.c { padding: 8px 25px; font-size: 16px; width: 600px; color: #666; background: #ccc; border-bottom: 1px solid #999; }
+					body ul li.e { border-bottom: 1px solid #ddd; }
+						body ul li.e div.el { float: left; padding: 15px 25px; width: 110px; }
+							body ul li.e div.el h1 { font-size: 12px; text-align: center; line-height: 34px; height: 34px; width: 110px; color: #aaa; background: #e5e5e5; border-radius: 5px; }
+								body ul li.e div.el h1.right { background: #00a65a; font-size: 16px; font-weight: bold; color: #fff; }
+								body ul li.e div.el h1.error { background: #f4543c; font-size: 14px; color: #fff; }
+							body ul li.e div.el h2 { margin-top: 5px; font-size: 12px; text-align: center; width: 110px; color: #aaa; }
+						body ul li.e div.er { float: left; padding: 15px 0; width: 470px; }
+							body ul li.e div.er h1 { margin: 3px 0 6px 0; }
+							body ul li.e div.er h2 { font-size: 12px; color: #999; }
+					body ul li.d { background: #e5e5e5; }
+					body ul li.f { padding-top: 5px; font-size: 12px; text-align: center; color: #444; background: #222; }
+			body iframe { display: none; }
+	</style>
+</head>
+
+
+<body>
+	<ul>
+		<li class="h"><h1>PHPMark 2</h1><button>开始评估</button></li>
+		<li class="c">基本性能</li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>Zend 虚拟机词法分析</h1><h2>词法分析是 Zend 虚拟机在处理 PHP 代码时进行的第一步操作，基于自动机实现，存在大量的判断分支，考验主机的综合性能。</h2></div></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>Zend 虚拟机代码执行</h1><h2>通过测试执行一段空循环所花费的时间，估算 Zend 虚拟机内部执行 Opcode 的速度。Opcode 是 Zend 虚拟机的“机器指令”。</h2></div></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>函数调用</h1><h2>函数调用速度受到 Zend 虚拟机中对函数名进行哈希及在函数表中查找函数入口地址所花费时间的影响。访问类、变量类似。</h2></div></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>内存复制</h1><h2>内存复制包括读取内存和写入内存，内存的速度对代码运行起到关键性的影响。如字符串操作、频繁的变量访问、图形处理等都极其依赖内存性能。</h2></div></li>
+		<li class="c">运算性能</li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>MD5 哈希</h1><h2>MD5 是当前互联网上使用最广泛的哈希算法，常常被应用于密码的加密存储。实际测试的是 PHP 内置函数 md5()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>SHA1 哈希</h1><h2>SHA1 是当前互联网上使用广泛的哈希算法，常常被应用于密码的加密存储、文件正确性校验。实际测试的是 PHP 内置函数 sha1()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>BASE64 编解码</h1><h2>BASE64 常用于二进制数据的安全传输。实际测试的是 PHP 内置函数 base64_encode() 和 base64_decode()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>JSON 编码</h1><h2>JSON 是服务端 PHP 代码和客户端 JavaScript 代码之间通信的常见格式。实际测试的是 PHP 内置函数 json_encode()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>RC4 加密</h1><h2>RC4 是一种对称性的流加密算法，算法简单，强度较高，运算速度快。实际测试的是使用 256 位密钥的 RC4 加密。</h2></li>
+		<li class="c">文件性能</li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>文件包含</h1><h2>通过文件包含，一个大的应用程序可以被分割成许多个小模块，按需加载。实际测试的是 PHP 内置结构 include() 和 require()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>32KB 文件写入</h1><h2>通过向一个文件连续写入 32KB 大小的数据，测试主机存储系统的连续写入速度。实际测试的是 PHP 内置函数 file_put_contents()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>32KB 文件读取</h1><h2>通过从一个 32KB 大小的文件中读取数据，测试主机存储系统的连续读取速度。实际测试的是 PHP 内置函数 file_get_contents()。</h2></li>
+		<li class="c">二进制性能</li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>ASCII 和字符互转</h1><h2>PHP 中不能原生使用 ASCII 值（整数）表示字符，需要借助内置函数 chr() 和 ord() 进行相互转换。这是处理二进制数据时最常进行的操作之一。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>32 位无符号整数生成</h1><h2>这是将 PHP 内部的整数类型转换为二进制表示的 32 位无符号整数。实际测试的是 PHP 内置函数 pack()。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>16 位带符号整数拆解</h1><h2>这是将二进制表示的 16 位带符号整数转换为 PHP 内部的整数类型。实际测试的是 PHP 内置函数 unpack()。</h2></li>
+		<li class="c">其它性能</li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>数组遍历</h1><h2>在对数组的操作中，使用 PHP 内置结构 foreach 进行遍历是极其常见的。这里测试数组遍历的速度。</h2></li>
+		<li class="e"><div class="el"><h1>?</h1><h2></h2></div><div class="er"><h1>类的实例化和销毁</h1><h2>现在的应用程序广泛应用了面向对象的设计思想，类是重要的实现工具。在实际代码中，通常存在大量类的实例化和对象销毁操作。</h2></li>
+		<li class="f">(C) 2005-2015 MF</li>
+	</ul>
+
+	<iframe></iframe>
+</body>
+
+
+<script type="text/javascript">
+	(function (window, document)
+	{
+		var ul		= document.getElementsByTagName ('li');
+		var frame	= document.getElementsByTagName ('iframe') [0];
+		var head	= null;
+
+		var entry_list	= [ ];
+		var entry_mark	=  0;
+		var entry_this	= -1;
+
+		for(var i in ul)
+		{
+			var li	= ul [i];
+
+			if(li.className == 'h')
+				head	= li;
+			else if(li.className == 'e')
+				entry_list.push (li);
+		}
+
+
+		var request = function ( )
+		{
+			var obj	= entry_list [++ entry_this];
+
+			if(obj == undefined)
+			{
+				if(entry_mark >= 0)
+					head.innerHTML	= '<h1>' + entry_mark + '</h1><h2>PHPMark 2</h2>';
+
+				return;
+			}
+
+			obj.className	= 'e d';
+			obj.firstChild.firstChild.innerHTML	= '';
+
+			frame.src	= './call/t' + (entry_this + 1) + '.php?r=' + Math.random ( );
+		};
+
+		var response = function ( )
+		{
+			var obj	= entry_list [entry_this];
+
+			obj.className	= 'e';
+
+			var mark	= -1;
+			var data	= null;
+
+			try
+			{
+				mark	= parseInt (frame.contentWindow.mark);
+				data	= frame.contentWindow.data;
+
+				if((mark < 0) || isNaN (mark))
+					throw 0;
+			}
+			catch (ex)
+			{
+				mark	= -1;
+			}
+
+			if(mark < 0)
+			{
+				obj.firstChild.firstChild.innerHTML	= '错误';
+				obj.firstChild.firstChild.className	= 'error';
+
+				entry_mark	= -1;
+			}
+			else
+			{
+				obj.firstChild.firstChild.innerHTML	= mark;
+				obj.firstChild.firstChild.className	= 'right';
+
+				if(entry_mark >= 0)
+					entry_mark	+= mark;
+
+				if(data)
+					obj.firstChild.firstChild.nextSibling.innerHTML	= data;
+			}
+
+			window.setTimeout (request, 500);		
+		};
+
+
+		if(frame.attachEvent)
+			frame.attachEvent ('onload', response);
+		else
+			frame.onload = response;
+
+		frame.onerror = response;
+
+
+		document.getElementsByTagName ('button') [0].onclick = function ( )
+		{
+			this.parentNode.removeChild (this);
+			request ( );
+		};
+	})(window, document);
+</script>
+
+
+</html>
